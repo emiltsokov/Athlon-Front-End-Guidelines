@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<title>Athlon Front-End Guidelines</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/print.css" rel="stylesheet" type="text/css" media="print" />
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<!--[if IE 7]><link href="css/ie7.css" rel="stylesheet" type="text/css" media="all" /><![endif]-->
+<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<ul class="contents">
+	<li><a href="#section-html" title="Scroll to HTML guidelines section">HTML</a></li>
+    <li><a href="#section-css" title="Scroll to CSS guidelines section">CSS</a></li>
+    <li><a href="#section-js" title="Scroll to JS guidelines section">JS</a></li>
+    <li><a href="#section-media" title="Scroll to media guidelines section">Media</a></li>
+    <li><a href="#section-mobile" title="Scroll to mobile guidelines section">Mobile</a></li>
+</ul>
+<div class="wrapper">
+	<h1>Athlon Front-end Guidelines</h1>
+    <section>
+    	<h2>Introduction</h2>
+        <p>This document describes rules and recommendations for developing rich front-end applications, which are easy to maintain. The goal is to define guidelines, enforcing consistent style and formatting and help developers avoid common pitfalls and mistakes.</p>
+    	<h2>General</h2>
+       	<p>The three main cornerstones of our philosophy in front-end engineering are:</p>
+        <ol>
+        	<li>Separation of presentation, content, and behavior.</li>
+			<li>Markup should be well-formed, semantically correct and generally valid.</li>
+            <li>Javascript should progressively enhance the experience.</li>
+        </ol>
+        <h3>General Practices</h3>
+		<h4>Indentation</h4>
+		<p>For all code languages, we require indentation to be done via soft tabs (using the space character). Hitting Tab in your text editor shall be equivalent to four spaces.</p>
+		<h4>Readability vs Compression</h4>
+		<p>We prefer readability over file-size savings when it comes to maintaining existing files. Plenty of whitespace is encouraged. There is no need for any developer to purposefully compress HTML or CSS, nor obfuscate JavaScript.</p>
+		<p>We will use server-side or build processes to automatically minify and gzip all static client-side files, such as CSS and JavaScript, preferably when delivering the project.</p>
+    </section><!-- section END -->
+    <section>
+    	<h2 id="section-html">HTML markup</h2>
+        <p>Markup defines the structure and outline of a document and offers a structured content. Markup is not intended to define the look and feel of the content on the page beyond rudimentary concepts such as headers, paragraphs, and lists. The presentation attributes of HTML have all been deprecated and style should be contained in style sheets.</p>
+        <ol class="html">
+            <li>Be as semantic as possible e.g. &ltblockquote&gt, &ltem&gt, &ltabbr&gt, &ltp&gt, lists, correctly ordered headers (h1 followed by h2 followed by h3), microformats.</li>
+            <li>Items in list form should always be housed in a UL, OL, or DL, never a set of DIVs or Ps.</li>
+            <li>Use <code>label</code> fields to label each form field, the <code>for</code> attribute should associate itself with the input field, so users can click the labels.</li>
+            <li>Do not use the size attribute on your input fields. The size attribute is relative to the font-size of the text inside the input. Instead use css width property.</li>
+            <li>Place an html comment on some closing div tags to indicate what element you're closing. It will help when there is lots of nesting and indentation.</li>
+            <li>Tables shouldn't be used for page layout.</li>
+            <li>Make use of THEAD, TBODY, and TH tags (and Scope attribute) when appropriate.
+    
+                <figure class="preCode">Table markup with proper syntax (THEAD,TBODY,TH [scope])</figure>
+                <div id="highlighter_506079" class="syntaxhighlighter ">
+                    <div class="lines no-wrap">
+                        <div class="line alt1"><code class="number">01.</code><span class="content"><span style="margin-left: 0px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">table</code> <code class="color1">summary</code><code class="plain">=</code><code class="string">"This is a chart of year-end returns for 2005."</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 24px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">thead</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt1"><code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 48px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">tr</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 72px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">th</code> <code class="color1">scope</code><code class="plain">=</code><code class="string">"col"</code><code class="plain">&gt;Table header 1&lt;/</code><code class="keyword">th</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt1"><code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 72px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">th</code> <code class="color1">scope</code><code class="plain">=</code><code class="string">"col"</code><code class="plain">&gt;Table header 2&lt;/</code><code class="keyword">th</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 48px !important;" class="block"><code class="plain">&lt;/</code><code class="keyword">tr</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt1"><code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 24px !important;" class="block"><code class="plain">&lt;/</code><code class="keyword">thead</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 24px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">tbody</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt1"><code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 48px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">tr</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 72px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">td</code><code class="plain">&gt;Table data 1&lt;/</code><code class="keyword">td</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt1"><code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 72px !important;" class="block"><code class="plain">&lt;</code><code class="keyword">td</code><code class="plain">&gt;Table data 2&lt;/</code><code class="keyword">td</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 48px !important;" class="block"><code class="plain">&lt;/</code><code class="keyword">tr</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt1"><code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="margin-left: 24px !important;" class="block"><code class="plain">&lt;/</code><code class="keyword">tbody</code><code class="plain">&gt;</code></span></span></div>
+                        <div class="line alt2"><code class="number">14.</code><span class="content"><span style="margin-left: 0px !important;" class="block"><code class="plain">&lt;/</code><code class="keyword">table</code><code class="plain">&gt;</code></span></span></div>
+                    </div>
+                </div>
+            </li>
+        
+            <li>Always use title-case for headers and titles. Do not use all caps or all lowercase titles in markup, instead apply the CSS property <code>text-transform:uppercase/lowercase</code>.</li>
+            <li>Use only lowercase for HTML tags and attributes.</li>
+            <li>Don't leave white space between the the opening and closing tag and the tag contents.</li>
+            <li>Provide alternative contents for multimedia.("alt" attributes for images, images for Adobe Flash/HTML5 Canvas animations).</li>
+            <li>Avoid inline/embedded CSS code, use external stylesheets where possible.</li>
+            <li>Always put your styles up top and scripts down bottom.</li>
+            <li>Correct use of IDs and classes.  Only use ID if there will only ever be one instance of an element on the page. IDs don't have any extra advantages over classes.</li>
+			<li>Don’t put a class on an element when you can easily traverse to it in the DOM using tag names.  E.g. use “.navigation UL LI”, not “.navigation. .navigation-list .navigation-item”.</li>
+            <li>Don't use depricated HTML elements like &lt;font&gt;, &lt;u&gt;, &lt;center&gt</li>
+            <li>Don't use HTML elements' attributes like "title" or "rel" for storing information, used by scripts. Instead use custom "data-" attributes.</li>
+			<li>It's strictly forbidden to nest a form inside another form.</li>
+        </ol>
+        <h3>Formatting rules</h3>
+        <ol class="html" start="19">
+        	<li>
+            	<p>Use a new line for every block, list, or table element, and indent every such child element. Inline elements should be written on the same line.</p>
+<pre>&lt;blockquote&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;Space&lt;/em&gt;, the final frontier.&lt;/p&gt;
+&lt;/blockquote&gt;</pre>
+            </li>
+            <li>When quoting attributes values, use double quotation marks.</li>
+            <li>Separate words in ID and class names by a hyphen, in order to improve understanding and scannability.</li>
+            <li>Avoid iframes, as they are the most costly element to add to a given page. They block the page from firing the onload event until they are complete.</li>
+        </ol>
+    </section><!-- section END -->
+    <section>
+    	<h2 id="section-css">CSS</h2>
+        <ol>
+         	<li>Use meaningful or generic ID and class names. It is always preferable to name something, be it an ID or a class, by the nature of <strong>what it is</strong> rather than by <strong>what it looks like</strong>.</li>
+			<li>Use ID and class names that are as short as possible but as long as necessary.</li>
+        	<li>When specifying color values, use 3 character hexadecimal notation where possible(#ffffff -> #fff).</li>
+            <li>Omit unit specification after "0" values.</li>
+            <li>Omit leading "0"s in values.</li>
+            <li>Use shorthand properties where possible.</li>
+            <li>Avoid qualifying ID and class names with type selectors, when DIV element is used.
+            <pre>#example {}
+.error {}</pre></li>
+            <li>Never reference <code>js-</code> prefixed class names from CSS files. <code>js-</code> are used exclusively from JS files. Use the <code>is-</code> prefix for state rules that are shared between CSS and JS.</li>
+            <li>Use <code>px</code> for <code>font-size</code>, because it offers absolute control over text and IE6 is largely considered deprecated. Additionally, unit-less line-height is preferred because it does not inherit a percentage value of its parent element, but instead is based on a multiplier of the font-size.</li>
+            <li>Where possible, avoid expensive CSS selectors. For example, avoid the <code>*</code> wildcard selector</li>
+            <li>All id and class declarations in CSS shall be written in only lowercase.</li>
+        </ul>
+        <h3>Formatting rules</h3>
+        <ul>
+        	<li>At minimum, format CSS with selectors on one line and each property on its own line. The declarations are indented. Also, if you specify multiple selectors, it's a good idea to start each on new line. This prevents lines from growing long and improves readability as well as version control workflow.</li>
+        	<li>Put spaces after <code>:</code> in property declarations.</li>
+            <li>Put spaces before <code>{</code> in rule declarations.</li>
+            <li>Use a semicolon after every declaration, the last one too.</li>
+            <li>Avoid using <code>@import</code> directive, because the browser is incapable of downloading the asset in parallel, which can block the download of other assets.</li>
+            <li>Avoid user agent detection as well as CSS "hacks" &mdash; try a different approach first.</li>
+            <li>Typically a print CSS file is added to the project, which includes additional styling for printed web pages. It is a good practice to show the full links, when a web page is being printed:
+            <pre>
+@media print {
+     a[href]:after { " (" attr(href) ") "; }
+}
+            </pre>
+            </li>
+            <li>Group sections by a section comment, when needed.</li>
+            <li>We use the following as guideline for our declaration order:
+            <pre>
+element.class {
+	/* Positioning */
+	display: inherit;
+	float: none;
+	clear: none;
+	visibility: visible;
+	overflow: visible;
+	position: static;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	
+	/* Margin, padding and box model */
+	width: auto;
+	min-width: auto;
+	max-width: auto;
+	height: auto;
+	min-height: auto;
+	max-height: auto;
+	margin: 0;
+	padding: 0;
+	border: none;
+	
+	/* Background */
+	background: none;
+	
+	/* Text and font properties */
+	color: #000;
+	direction: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	text-align: inherit;
+	text-transform: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	/*...*/
+	
+	/*Element specific properties - Lists, Tables */
+	list-style: inherit;
+	border-collapse: inherit;
+	border-spacing: inherit;
+	cursor: auto;
+	opacity: 1;
+}
+
+            </pre>
+            </li>
+        </ol>
+    </section><!-- section END -->
+    <section>
+    	<h2 id="section-js">JS</h2>
+        <p>JavaScript code, when properly applied to a web page, enhances the overall user and browser-based experience through attaching to events and controlling the overall behavior layer.</p>
+        <p>We primarily develop new applications in jQuery, though we have expertise in plain JavaScript as well as all major modern javascript libraries.</p>
+        <h3>General principles</h3>
+        <ol>
+        	<li>99% of code should be housed in external javascript files. They should be included at the END of the BODY tag for maximum page performance.</li>
+            <li>Don't rely on the user-agent string. Do proper feature detection.</li>
+            <li>Don't use document.write(), avoid eval(), void, "with" and "continue" statements.</li>
+			<li>All Boolean variables should start with "is".</li>
+            <li>Name variables and functions logically: For example: popUpWindowForAd rather than myWindow.</li>
+            <li>Don't manually minify. With the exception of the traditional i, etc. for for loops, variables should be long enough to be meaningful.</li>
+            <li>Constants or configuration variables (like animation durations, etc.) should be at the top of the file.</li>
+            <li>Strive to create functions which can be generalized, take parameters, and return values. This allows for substantial code reuse and, when combined with includes or external scripts, can reduce the overhead when scripts need to change. For example, instead of hard coding a pop-window with window size, options, and url, consider creating a function which takes size, url, and options as variables.</li>
+            <li>Comment your code! It helps reduce time spent troubleshooting JavaScript functions.</li>
+            <li>Minimize global variables - the less globals you create, the better.</li>
+            <li>All JavaScript variables shall be written in either completely lowercase letter or camelCase. The one exception to this are Constructor functions, which are capitalized by tradition.</li>
+            <li>Avoid unnecessary DOM manipulations</li>
+        </ol>
+        <h3>Formatting rules</h3>
+        <ol>
+        	<li>Use soft-tabs with a four space indent.</li>
+            <li>Use implicit parentheses when possible.
+            <pre>
+if (something) {
+	//Use implicit parentheses, though not required by JS syntax
+}
+            </pre>
+            </li>
+        	<li>In general, the use of whitespace should follow longstanding English reading conventions. Such that, there will be one space after each comma and colon (and semi-colon where applicable), but no spaces immediately inside the right and left sides of parenthesis. In short, we advocate readability within reason. Additionally, braces should always appear on the same line as their preceding argument.
+            <pre>
+for (var i = 0, j = arr.length; i < j; i++) {
+	//Do something.
+}
+            </pre>
+            </li>
+            <li>In jQuery use <code>$.fn.on</code> instead of <code>$.fn.bind</code>, <code>$.fn.delegate</code> and <code>$.fn.live</code>.</li>
+            <li>When possible try to prefix all javascript-based selectors with <code>js-</code>. This is taken from slightly obtrusive javascript. The idea is that you should be able to tell a presentational class from a functional class.</li>
+        </ol>
+    </section><!-- section END -->
+    <section>
+    	<h2 id="section-media">Media and other assets</h2>
+        <h3>Images</h3>
+        <ol>
+        	<li>Use CSS backgrounds for decorative images and &lt;img&gt; tags for content images, when possible.</li>
+        	<li>For repeating images, use <a href="http://www.iandevlin.com/blog/2010/03/webdev/fading-issue-with-repeating-background-transparent-image-in-internet-explorer">something larger than 1x1 pixels</a></li>
+            <li>You should never be using spacer images, except when designing HTML newsletters.</li>
+            <li>Use CSS sprites generously. They make hover states easy, improve page load time.</li>
+            <li>When exporting an image for web, make sure you choose the appropriate format, so that the result is <strong>visually appealing</strong> and <strong>optimised in file size</strong> at the same time (JPG, PNG, GIF).</li>
+            <li>Typically, all images should be sliced with a transparent background (PNG8). All should be cropped tightly to the image boundaries. However, the logo should always have a background matte and have padding before the crop. (so other people can hotlink to the file)</li>
+            <li>Typically, before delivering the project an automated optimization is done via <a href="http://psydk.org/PngOptimizer.php" target="_blank">an image optimization software</a>.</li>
+            <li>Before delevery, don't forget to add favicon to the project. It can be easily <a href="http://tools.dynamicdrive.com/favicon/" target="_blank">created online</a>.</li>
+        </ol>
+        <h3>Video</h3>
+        <ol>
+        	<li>When exporting video content for native HTML5 playback, bear in mind that there are two formats, which cover the majority of browsers out there:
+            	<ul>
+                	<li><strong>MP4 H.264</strong> (with AAC or MP3 audio)</li>
+                    <li><strong>WebM</strong> (with OGG audio)</li>
+                </ul>
+                <pre>
+                <video controls>
+  <source src="somevideo.webm" type="video/webm">
+  <source src="somevideo.mp4" type="video/mp4">
+  I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+</video>
+                </pre>
+                <p>* Bear in mind that the <code>audio</code> and <code>video</code> HTML5 elements are not supported in IE8-.</p>
+            </li>
+            <li>Always provide alternative content (like images/text/Adobe Flash) as fallback option.</li>
+        </ol>
+        <h3>Fonts</h3>
+        <p>The <code>@font-face</code> at-rule allows you to define custom fonts. It was first defined in the CSS2 specification, but was removed from CSS2.1. Currently, it's a draft recommendation for CSS3.</p>
+		<p>Our first and most preferred choice for customizing fonts on the web is @font-face, simply because it is part of the CSS Fonts Module working draft which means it will continue to grow in popularity as browser support grows, and ease of use for it improves as it becomes more stable.</p>
+        <pre>
+@font-face {
+	font-family: 'MyFontFamily';
+	src: url('myfont-webfont.eot');                      /* IE9 Compat Modes */
+	src: url('myfont-webfont.eot?iefix') format('eot'),  /* IE6-IE8 */
+	url('myfont-webfont.woff') format('woff'),           /* Modern Browsers */
+	url('myfont-webfont.ttf') format('truetype'),        /* Safari, Android, iOS */
+	url('myfont-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+	font-weight: normal;
+	font-style: normal;
+}
+        </pre>
+        <p>Some tips for using <code>@font-face</code> include:</p>
+        <ol>
+        	<li>IE 6–8 will only accept a TrueType font packaged as an EOT.</li>
+			<li>font-weight and font-style have different meanings within @font-face. Declarations where font-weight:bold; means this is the bold version of this typeface, rather than apply bold to this text</li>
+            <li>We use automated tools for creating our different font formats, like <a href="http://www.fontsquirrel.com/tools/webfont-generator" target="_blank">FontSquirrel</a> or use other services such as <a href="https://developers.google.com/fonts/docs/getting_started?hl=bg&csw=1" target="_blank">Google WebFonts API</a> or <a href="https://typekit.com/" target="_blank">Typekit</a>, when implementing custom font into our projects.</li>
+        </ul>
+        <h4>Font Licensing</h4>
+		<p>Even though you can transform just about any font into a web font file, you should still make sure it is legally okay for you to do so. Many foundries have updated their conditions to specify how their fonts can be used on the web.</p>
+    </section><!-- section END -->
+    <section>
+    	<h2 id="section-mobile">Mobile</h2>
+        <p>Mobile web development is a whole new universe in terms of UX interface design and technical challenges. A detailed guideline will be posted soon, till then you can take a look at the links below:</p>
+        <ul>
+        	<li><a href="http://www.vervesearch.com/blog/the-ultimate-guide-to-developing-mobile-websites/" target="_blank" title="(opens in new tab)">http://www.vervesearch.com/blog/the-ultimate-guide-to-developing-mobile-websites/</a></li>
+            <li><a href="http://www.smashingmagazine.com/guidelines-for-mobile-web-development/" target="_blank" title="(opens in new tab)">http://www.smashingmagazine.com/guidelines-for-mobile-web-development/</a></li>
+        </ol>
+    </section><!-- section END -->
+    <section>
+    	<h3>Sources</h3>
+        <ol>
+            <li><a href="https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml" target="_blank" title="(opens in new tab)">https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml</a></li>
+            <li><a href="http://isobar-idev.github.com/code-standards/" target="_blank" title="(opens in new tab)">http://isobar-idev.github.com/code-standards/</a></li>
+            <li><a href="https://github.com/styleguide" target="_blank" title="(opens in new tab)">https://github.com/styleguide</a></li>
+            <li><a href="http://browserdiet.com/?utm_source=CSS-Weekly&utm_campaign=Issue-51&utm_medium=email" target="_blank" title="(opens in new tab)">http://browserdiet.com/?utm_source=CSS-Weekly&utm_campaign=Issue-51&utm_medium=email</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/" target="_blank" title="(opens in new tab)">https://developer.mozilla.org/en-US/</a></li>
+            <li><a href="http://html5boilerplate.com/" target="_blank" title="(opens in new tab)">http://html5boilerplate.com/</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats" target="_blank" title="(opens in new tab)">https://developer.mozilla.org/en-US/docs/HTML/Supported_media_formats</a></li>
+        </ol>
+    </section><!-- section END -->
+</div> <!-- .wrapper END -->
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='js/jquery-1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script>
+<script type="text/javascript" src="js/init.js"></script>
+</body>
+</html>
